@@ -7,36 +7,116 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="1,0">
-                <GradientStop Color="#FD9306" Offset="0.1" /> <!-- Está curioso esto porque mientras mas cerca estés del cero mas difumina el color-->
-                <GradientStop Color="#D71202" Offset="0.8" /> <!-- y mientras mas se aleje del cero menor es el difuminado (osea, del cual se ve mas) -->
+
+
+                <GradientStop Color="{Binding parametrosRecibe.Colorpoder}" Offset="0.1"/>
+                <GradientStop Color="{Binding parametrosRecibe.ColorFondo}" Offset="0.8"/>
             </LinearGradientBrush>
         </Grid.Background>
         <StackLayout Margin="10,0,10,0">
-            <Image Source="https://i.ibb.co/r6d9rnQ/volver.png" HeightRequest="25" HorizontalOptions="Start" Margin="10,20,0,0"/> <!-- Margenes: izquierda, arriba, derecha, abajo-->
-            <Label Text="#001" FontSize="50" FontAttributes="Bold" TextColor="White"/>
-            <Image Source="https://goo.su/a8S8mw" />
-            <Label Text="Haunter" FontSize="50" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
-            <Grid RowDefinitions="auto, auto">
-                <sharpnado:MaterialFrame CornerRadius="15" MaterialBlurStyle="Light" Grid.RowSpan="2" MaterialTheme="AcrylicBlur"/>
-                <StackLayout Orientation="Horizontal">
+            <Image Source="https://i.ibb.co/r6d9rnQ/volver.png"
+               HeightRequest="25"
+               HorizontalOptions="Start"
+               Margin="10,20,0,0"
+               >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{Binding parametrosRecibe.Nroorden}"
+               FontSize="50"
+               FontAttributes="Bold"
+               TextColor="White"
+               />
+            <Image Source="{Binding parametrosRecibe.Icono}"
+               HeightRequest="350"
+               />
+            <Label Text="{Binding parametrosRecibe.Nombre}"
+               FontSize="40"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+            <Grid >
+                <sharpnado:MaterialFrame 
+                CornerRadius="15"
+                MaterialBlurStyle="Light"
+                MaterialTheme="AcrylicBlur"
+                />
+                <StackLayout Orientation="Horizontal"
+                         Margin="20,10,20,10">
                     <StackLayout>
-                        <Label Text="Fuego" FontSize="30" FontAttributes="Bold" TextColor="White"/>
-                        <Label Text="Poder" TextColor="White" HorizontalOptions="Center"/>
+                        <Label Text="{Binding parametrosRecibe.Poder}"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                        <Label Text="poder"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                        <StackLayout Orientation="Horizontal" >
-                            <BoxView HeightRequest="30" WidthRequest="30" BackgroundColor="Black" CornerRadius="15" VerticalOptions="Center"/>
-                            <BoxView HeightRequest="30" WidthRequest="30" BackgroundColor="Black" CornerRadius="15" VerticalOptions="Center"/>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                             >
+                        <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="CenterAndExpand">
+                            <BoxView HeightRequest="30"
+                             WidthRequest="30"
+                             BackgroundColor="{Binding parametrosRecibe.ColorFondo}"
+                             CornerRadius="15"
+                             VerticalOptions="Center"/>
+                            <BoxView HeightRequest="30"
+                             WidthRequest="30"
+                             BackgroundColor="{Binding parametrosRecibe.Colorpoder}"
+                             CornerRadius="15"
+                             VerticalOptions="Center"/>
                         </StackLayout>
-                        <Label Text="Colores" TextColor="White" HorizontalOptions="Center"/>
+
+                        <Label Text="colores"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                          />
                     </StackLayout>
-                    <StackLayout HorizontalOptions="Center">
-                        <Label Text="#001" FontSize="30" FontAttributes="Bold" TextColor="White"/>
-                        <Label Text="Orden" TextColor="White" HorizontalOptions="Center"/>
+                    <StackLayout>
+                        <Label Text="{Binding parametrosRecibe.Nroorden}"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                        <Label Text="orden"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
                     </StackLayout>
                 </StackLayout>
-                <Image Source="https://i.ibb.co/tC1FVWt/Titulo-Universo-Pok-mon.png" Grid.Row="1" />
+
             </Grid>
+            <Frame CornerRadius="30"
+               Margin="0,20,0,0"
+               HeightRequest="65"
+               HasShadow="False"
+               Padding="0">
+                <Grid ColumnDefinitions="*,*">
+                    <Button Text="seguir"
+                        BackgroundColor="#5adf77"
+                        CornerRadius="30"
+                        FontAttributes="Bold"
+                        Margin="-5,0,0,0"/>
+                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="https://i.ibb.co/z67TBnR/tubo-de-sangre.png"
+                               HeightRequest="35"
+                               Margin="0,0,-10,0"/>
+                            <Label Text="YouTube"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding parametrosRecibe.Icono}"
+                               HeightRequest="35"
+                               />
+                            <Label Text="fb"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Frame>
         </StackLayout>
     </Grid>
 </ContentPage>
